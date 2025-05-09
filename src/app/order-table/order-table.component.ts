@@ -25,7 +25,7 @@ interface Order {
 @Component({
   selector: 'app-order-table',
   templateUrl: './order-table.component.html',
-  styleUrls: ['./order-table.component.css'],
+  styleUrls: ['./order-table.component.scss'],
   standalone: true,
   imports: [
     CommonModule,

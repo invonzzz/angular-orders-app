@@ -23,7 +23,7 @@ interface Order
 @Component({
   selector: 'app-edit-order-dialog',
   templateUrl: './edit-order-dialog.component.html',
-  styleUrls: ['./edit-order-dialog.component.css'],
+  styleUrls: ['./edit-order-dialog.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
