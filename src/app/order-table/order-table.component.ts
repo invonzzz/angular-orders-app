@@ -11,6 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { OrderService } from '../order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditOrderDialogComponent } from '../edit-order-dialog/edit-order-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 interface Order {
   id: number;
@@ -35,7 +37,9 @@ interface Order {
     MatButtonModule,
     MatProgressSpinnerModule,
     MatPaginator,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    FormsModule
   ],
 })
 export class OrderTableComponent implements OnInit 
@@ -190,13 +194,11 @@ export class OrderTableComponent implements OnInit
     );
   }
 
-  toggleExtraColumns(): void 
-  {
-    this.showExtraColumns = !this.showExtraColumns;
-    this.displayedColumns = this.showExtraColumns 
-      ? [...this.baseColumns, ...this.extraColumns]
-      : [...this.baseColumns];
-  }
+  toggleExtraColumns(): void {
+  this.displayedColumns = this.showExtraColumns 
+    ? [...this.baseColumns, ...this.extraColumns]
+    : [...this.baseColumns];
+}
 
 
   

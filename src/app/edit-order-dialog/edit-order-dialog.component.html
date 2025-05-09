@@ -6,7 +6,7 @@
         <mat-label>First Name</mat-label>
         <input matInput formControlName="first_name" required>
         <mat-error *ngIf="orderForm.get('first_name')?.hasError('required')">
-          Please write the first name
+          Please specify the first name
         </mat-error>
         <mat-error *ngIf="orderForm.get('first_name')?.hasError('pattern')">
           Only letters, spaces and hyphens
@@ -17,7 +17,7 @@
         <mat-label>Last Name</mat-label>
         <input matInput formControlName="last_name" required>
         <mat-error *ngIf="orderForm.get('last_name')?.hasError('required')">
-          Please write the last name
+          Please specify the last name
         </mat-error>
         <mat-error *ngIf="orderForm.get('last_name')?.hasError('pattern')">
           Only letters, spaces and hyphens
