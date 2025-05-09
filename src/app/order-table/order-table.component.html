@@ -1,0 +1,93 @@
+<div class="header-container">
+  <div class="header-left">
+    <h2 class="title">Latest Orders</h2>
+    <span class="total">{{ totalOrders }} total</span>
+  </div>
+  <div class="header-right">
+    
+    <!-- buttons -->
+    <button mat-button [matMenuTriggerFor]="columnsMenu" class="columns-toggle">
+      <mat-icon>view_column</mat-icon>
+      Columns
+    </button>
+    
+    <mat-menu #columnsMenu="matMenu">
+      <button mat-menu-item (click)="toggleExtraColumns()">
+        <mat-icon>{{showExtraColumns ? 'check_box' : 'check_box_outline_blank'}}</mat-icon>
+        <span>Show Extra Columns</span>
+      </button>
+    </mat-menu>
+    
+    <button class="new-entry-btn" (click)="addNewOrder()">NEW ENTRY</button>
+  </div>
+</div>
+
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- id -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Order ID </th>
+      <td mat-cell *matCellDef="let order"> {{ order.id }} </td>
+    </ng-container>
+
+    <!-- name -->
+    <ng-container matColumnDef="customer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+      <td mat-cell *matCellDef="let order"> {{ order.first_name }} {{ order.last_name }} </td>
+    </ng-container>
+  
+    <!-- date -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let order"> {{ order.data }} </td>
+    </ng-container>
+    <!-- status -->
+<ng-container matColumnDef="status">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+  <td mat-cell *matCellDef="let order">
+    <span class="status-indicator" [ngClass]="'status-' + order.status.toLowerCase()"></span>
+    {{ order.status }}
+  </td>
+</ng-container>
+  
+    <!-- email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let order"> {{ order.email }} </td>
+    </ng-container>
+  
+    <!-- address -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let order"> {{ order.address }} </td>
+    </ng-container>
+  
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let order">
+        <button mat-icon-button 
+                
+                (click)="editOrder($event, order)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row 
+    *matRowDef="let row; columns: displayedColumns;" 
+    [class.archive-row]="row.status === 'archive'"
+    (click)="onRowClick($event, row)">
+</tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>

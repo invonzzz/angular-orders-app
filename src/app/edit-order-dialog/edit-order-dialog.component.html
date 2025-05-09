@@ -1,0 +1,94 @@
+<h2 mat-dialog-title class="dialog-title">{{isNewOrder ? 'New Order' : 'Edit Order'}}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="orderForm" class="dialog-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" required>
+        <mat-error *ngIf="orderForm.get('first_name')?.hasError('required')">
+          Please write the first name
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('first_name')?.hasError('pattern')">
+          Only letters, spaces and hyphens
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="last_name" required>
+        <mat-error *ngIf="orderForm.get('last_name')?.hasError('required')">
+          Please write the last name
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('last_name')?.hasError('pattern')">
+          Only letters, spaces and hyphens
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      <mat-error *ngIf="orderForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="orderForm.get('email')?.hasError('email') || orderForm.get('email')?.hasError('pattern')">
+        Enter a valid email 
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" required>
+      <mat-error *ngIf="orderForm.get('address')?.hasError('required')">
+        Address is required
+      </mat-error>
+      <mat-error *ngIf="orderForm.get('address')?.hasError('maxlength')">
+        Address is too long (max 100)
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="data" placeholder="DD.MM.YYYY" required>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('required')">
+          Date is required
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('pattern')">
+          DD.MM.YYYY format
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('invalidDate')">
+          Invalid date format
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('invalidDay')">
+          Day must be between 1 and 31
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('invalidMonth')">
+          Month must be between 1 and 12
+        </mat-error>
+        <mat-error *ngIf="orderForm.get('data')?.hasError('invalidYear')">
+          Year must be between 1950 and 2050
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let status of statusOptions" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="orderForm.get('status')?.hasError('required')">
+          Status is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()">SAVE SETTINGS</button>
+  </div>

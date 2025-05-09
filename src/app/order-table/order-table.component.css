@@ -1,0 +1,139 @@
+.spinner-container 
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table 
+{
+    width: 100%;
+    margin-top: 10px;
+}
+  
+.mat-elevation-z8 
+{
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: transparent; 
+  box-shadow: none;
+}
+
+.header-container 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+.header-left 
+{
+    display: flex;
+    align-items: baseline;
+}
+  
+.title 
+{
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+  
+.total 
+{
+    font-size: 14px;
+    color: #999;
+}
+  
+.header-right 
+{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+  
+.new-entry-btn 
+{
+    background-color: white; 
+    color: #007bff; 
+    font-size: 14px;
+    padding: 10px 10px;
+    font-weight: bold;
+    padding: 5px 20px;
+    border: 2px solid #b3d9ff; 
+    border-radius: 4px;
+    transition: all 0.4s ease; 
+}
+  
+.new-entry-btn:hover 
+{
+    background-color: #e6f2ff; 
+    border-color: #007bff;  
+    color: #0056b3;
+  }
+
+
+.table-container 
+{
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+mat-paginator 
+{
+  border-radius: 0 0 10px 10px;
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+.status-indicator 
+{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-active 
+{
+  background-color: #4CAF50;
+}
+
+.status-pending 
+{
+  background-color: #FFC107; 
+}
+
+.status-completed 
+{
+  background-color: #2196F3; 
+}
+
+.status-cancelled 
+{
+  background-color: #F44336; 
+}
+
+.status-archive 
+{
+  background-color: #9E9E9E; 
+}
+
+.status-inactive 
+{
+  background-color: #000000;
+}
+
+.status-pending, 
+.status-active, 
+.status-completed, 
+.status-cancelled,
+.status-archive 
+{
+  color: inherit; 
+  font-weight: normal;
+}
+
